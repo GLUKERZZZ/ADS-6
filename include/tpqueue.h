@@ -9,21 +9,21 @@ struct SYM {
 
 template <typename T>
 class TPQueue {
-  private:
-    struct Node {
-      T data;
-      Node* next;
-      explicit Node(const T& sym) : data(sym), next(nullptr) {}
-    };
+ private:
+  struct Node {
+    T data;
+    Node* next;
+    explicit Node(const T& sym) : data(sym), next(nullptr) {}
+  };
   Node* head;
 
-  public:
-    TPQueue() : head(nullptr) {}
-    ~TPQueue() {
-      while (!isEmpty()) {
-        pop();
-      }
+ public:
+  TPQueue() : head(nullptr) {}
+  ~TPQueue() {
+    while (!isEmpty()) {
+      pop();
     }
+  }
   void push(const T& sym) {
     Node* newNode = new Node(sym);
     if (head == nullptr || sym.prior > head->data.prior) {
@@ -43,7 +43,7 @@ class TPQueue {
       return { '\0', 0 };
     }
     Node* temp = head;
-    SYM data = head->data;
+    T data = head->data;
     head = head->next;
     delete temp;
     return data;
